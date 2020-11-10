@@ -5,14 +5,14 @@
   if(isset($_POST['delete'])){
     $id_to_delete = mysqli_real_escape_string($conn, $_POST['id_to_delete']);
 
-    $sql = "DELETE FROM blogs WHERE id = $id_to_delete";
+    $sql = "DELETE FROM `blogs` WHERE `id` = $id_to_delete";
 
     if(mysqli_query($conn, $sql)){
       header("Location: index.php");
     }else {
       echo mysqli_connect_error($conn);
   }
-}
+  }
   if(isset($_GET['id'])){
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
@@ -38,7 +38,7 @@
   <p><?php echo $blog['body'];?></p>
 
   <form action="details.php" method = 'POST'>
-    <input type="hidden" name = "id_to_delete "value ="<?php echo $blog['id'];?>">
+    <input type="hidden" name = "id_to_delete" value ="<?php echo $blog['id'];?>">
     <input type="submit" name = "delete" value = "delete">
 
   </form>
